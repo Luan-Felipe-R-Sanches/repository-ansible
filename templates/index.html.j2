@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Servidor Web Ansible</title>
+    <style>body { font-family: Arial; text-align: center; margin-top: 50px; background-color: #f4f4f9; color: #333; }</style>
+</head>
+<body>
+    <h1>Olá do Servidor {{ ansible_hostname }}! 🚀</h1>
+    <h3>Este servidor está rodando <strong>{{ ansible_distribution }} {{ ansible_distribution_version }}</strong></h3>
+    <p>Endereço IP Principal: <strong>{{ ansible_default_ipv4.address }}</strong></p>
+    <hr>
+    <p><em>Infraestrutura como Código - Página gerada dinamicamente via Ansible Templates (Jinja2)</em></p>
+</body>
+</html>
