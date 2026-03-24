@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Servidor Web Ansible (Role)</title>
+    <style>body { font-family: Arial; text-align: center; margin-top: 50px; background-color: #2b2b2b; color: #4CAF50; }</style>
+</head>
+<body>
+    <h1>Olá do Servidor {{ ansible_hostname }}! 🚀</h1>
+    <h3>Sistema: <strong>{{ ansible_distribution }} {{ ansible_distribution_version }}</strong></h3>
+    <p>IP: <strong>{{ ansible_default_ipv4.address }}</strong></p>
+    <hr>
+    <p><em>Ambiente atualizado via Ansible Roles e Handlers</em></p>
+</body>
+</html>

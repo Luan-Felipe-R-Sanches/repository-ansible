@@ -1,0 +1,22 @@
+---
+- name: Instalar o servidor web Nginx
+  ansible.builtin.package:
+    name: nginx
+    state: present
+
+- name: Definir diretorio base do Nginx
+  ansible.builtin.set_fact:
+    doc_root: "{{ '/var/www/html' if ansible_os_family == 'Debian' else '/usr/share/nginx/html' }}"
+
+- name: Deploy da pagina HTML customizada usando Jinja2
+  ansible.builtin.template:
+    src: index.html.j2
+    dest: "{{ doc_root }}/index.html"
+    mode: '0644'
+  notify: Restart Nginx
+
+- name: Garantir que o Nginx esta rodando e habilitado
+  ansible.builtin.service:
+    name: nginx
+    state: started
+    enabled: true

@@ -1,16 +1,6 @@
 ---
-- name: Server Baseline - Pacotes Essenciais
+- name: Deploy de Infraestrutura Base
   hosts: homelab
   become: true
-
-  tasks:
-    - name: Garantir que ferramentas do dia a dia estejam instaladas
-      ansible.builtin.package:
-        name:
-          - git
-          - curl
-          - wget
-          - vim
-          - unzip
-          - tar
-        state: present
+  roles:
+    - nginx
