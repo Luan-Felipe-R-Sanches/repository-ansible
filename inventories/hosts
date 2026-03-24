@@ -1,0 +1,9 @@
+[debian]
+192.168.31.152
+
+[almalinux]
+192.168.31.109
+
+[homelab:children]
+debian
+almalinux
