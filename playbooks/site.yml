@@ -4,3 +4,7 @@
   become: true
   roles:
     - nginx
+  tasks:
+    - name: Validar o Ansible Vault (NUNCA exiba senhas reais no terminal em prod!)
+      ansible.builtin.debug:
+        msg: "O Vault funcionou! O segredo e: {{ api_key_secreta }}"
