@@ -1,0 +1,22 @@
+[redhat]
+IP
+rocky01 ansible_host=IP
+
+[debian]
+IP
+192.168.1[101:110]
+servidor[1:10].dominio.com
+debian01 ansible_host=IP
+debian01 ansible_host=IP ansible_user=usuario
+debian01 ansible_host=IP ansible_user=usuario ansible_ssh_port=2222
+
+ansible_private_key_file=~/.ssh/id_rsa
+
+
+[linux:children]
+redhat
+debian
+
+[debian:vars]
+ansible_port=22
+ansible_user=usuario

@@ -1,0 +1,30 @@
+ansible all -m ping
+ansible -i hosts.yaml all -m ping
+ansible -i arquivo1 -i arquivo2 all -m ping
+all - todos os target de nosso inventário
+ungroup - todos os hosts que não estão em um grupo específico
+ansible rocky01 -m debug -a var=port_80
+
+variaveis
+ordem de prioridade
+1. variáveis de linha de comando
+2. variáveis de playbook
+3. variáveis de host
+4. variáveis de grupo
+5. variáveis de inventário
+
+plugin de inventário dinamico
+
+ansible -config dump
+
+
+----
+ansible-playbook -i inventory/hosts -u usuario -k solicacao-senha -k senha-elevacao-privilegio -b become playbooks/1_UpdateLinux.yaml --syntax-check
+ansible-playbook -i inventory/hosts playbooks/1_UpdateLinux.yaml --list-hosts
+ansible-playbook -i inventory/hosts playbooks/1_UpdateLinux.yaml --list-tasks
+ansible-playbook -i inventory/hosts playbooks/1_UpdateLinux.yaml -v
+
+ansible-playbook -i inventory/hosts -b playbooks/1_UpdateLinux.yaml
+
+
+ansible-playbook -i inventory/hosts -l maquina --tags copy --tag security -b playbooks/PLAYBOOK.yaml

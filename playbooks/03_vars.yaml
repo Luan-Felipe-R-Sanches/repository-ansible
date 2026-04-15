@@ -1,0 +1,19 @@
+---
+- name: Testando variaveis
+  hosts: localhost
+  vars:
+    message: "nova mensagem"
+    packages:
+      - vim
+      - htop
+  tasks:
+    - name: DEBUG | {{ message }}
+      ansible.builtin.debug:
+        msg: "O valor da variavel é {{ message }}"
+    
+    - name: DNF | Install packges
+      ansible.builtin.dnf:
+        name: "{{ packages }}"
+        state: latest
+     
+...

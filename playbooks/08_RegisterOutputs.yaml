@@ -1,0 +1,17 @@
+---
+- name: Ansible Register Outputs
+  hosts: all
+  become: true
+  tasks:
+    - name: SISOP | Procura arquivos
+      find:
+        paths: /home/luan
+        patterns: "*.txt"
+      register: output
+
+    - name: SISOP | Exibe o resultado
+      debug:
+         var: "{{ output.files | map(attribute='path') | sort | list }}" 
+...
+
+ansible-playbook -i inventory/hosts -l MAQUINA -b playbooks/08_RegisterOutputs.yaml

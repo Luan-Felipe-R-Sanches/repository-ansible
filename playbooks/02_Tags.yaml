@@ -1,0 +1,24 @@
+---
+- name: Testing TAG
+  hosts: all
+  tasks:
+    - name: SISOP | Set a hostname
+      ansible.builtin.hostname:
+        name: srv01
+        use: systemd
+    - name: SISOP | Disable SELinux
+      ansible.builtin.selinux:
+        state: disabled
+        tag: 
+        - selinux
+        - security
+        
+    - name: COPY | Copy ansible.cfg
+      ansible.builtin.copy:
+        src: ansible.cfg
+        dest: /etc/ansible/ansible.cfg
+        owner: root
+        group: root
+        mode: '0644'
+      tags:
+        - copy

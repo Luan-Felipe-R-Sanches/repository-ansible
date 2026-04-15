@@ -1,0 +1,11 @@
+---
+- name: Variables in Runtime
+  hosts: localhost
+  tasks:
+    - name: DEBUG | Variables in Runtime
+      ansible.builtin.debug:
+        msg: "{{ message }}"
+...
+
+ansible-playbook -i inventory/hosts -l localhost --extra-vars message="Hello World"
+ansible-playbook -i inventory/hosts -l localhost --extra-vars message="{{ ansible_all_ipv4_addresses }}"

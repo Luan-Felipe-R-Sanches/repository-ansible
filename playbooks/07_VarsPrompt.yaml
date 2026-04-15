@@ -1,0 +1,29 @@
+---
+- name: Ansible Prompt | Criando usuário no Linux
+  hosts: all
+  vars_prompt:
+    - name: username
+      prompt: Qual é o seu nome de usuário?
+      private: false
+    - name: password
+      prompt: Qual é a sua senha?
+      private: true # Opcional - o padrão é true
+      encrypt: "md5_crypt" # Requer passlib instalado
+      confirm: yes
+      salt_size: 7
+    - name: shell
+      prompt: Qual é o seu shell?
+  
+  tasks:
+    - name: Imprimir uma mensagem
+      ansible.builtin.debug:
+        msg: 'Usuário: {{ username }} | Senha: {{ password }} | Shell: {{ shell }}'
+    
+    - name: USUÁRIO | Adicionar usuário
+      ansible.builtin.user:
+        name: "{{ username }}"
+        comment: "Usuário criado pelo Ansible"
+        shell: "{{ shell }}"
+        home: "/home/{{ username }}"
+        password: "{{ password }}"
+...

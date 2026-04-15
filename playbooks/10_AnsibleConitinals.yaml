@@ -1,0 +1,18 @@
+ansible -i invetory/hosts linux -m setup | grep ansible_distribution
+---
+- name: Ansiible Conditionals (when)
+  hosts: all
+  tasks:
+    - name: DNF | Update System
+      ansible.builtin.dnf:
+        name: "*"
+        state: latest
+      when: ansible_distribution == "Rocky"
+- name: APT | Update System
+      ansible.builtin.apt:
+        update_cache: yes
+      when: ansible_distribution == "Debian"
+-name : APT | Update System
+      ansible.builtin.apt:
+        upgrade: dist
+      when: ansible_distribution == "Debian"
